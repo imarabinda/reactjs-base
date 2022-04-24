@@ -1,6 +1,6 @@
 import {Map} from 'immutable';
 
-import {Home} from './../routers/pages/Home/Home';
+import Home from './../routers/pages/Home/Home';
 import {About} from './../routers/pages/About/About'
 import {error} from './../routers/pages/404/404'
 

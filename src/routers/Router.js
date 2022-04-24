@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import {routes} from '../configs/routes';
 import {Routes,Route} from "react-router-dom";;
 

@@ -2,4 +2,4 @@ import {
   createAction,
 } from '@reduxjs/toolkit'
 
-export const testAction = createAction('test_action')
+export const switchMode = createAction('SWITCH_MODE')

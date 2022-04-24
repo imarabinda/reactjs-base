@@ -1,20 +1,34 @@
 import React from "react";
-import { testAction } from "../../../modules/common/actions";
 import { dispatch, select } from "../../../redux/store";
-import { testSelector } from "../../../modules/common/selectors";
-export const Home = (props)=>{
+import { themeSelector } from "../../../modules/common/selectors";
+import withTheme from "../../../theme/withTheme";
+import { switchMode } from "../../../modules/common/actions";
+const Home = (props)=>{
 
-    console.log(select(testSelector),'here');
-    
+    console.log(props);
     const handleClick = ()=>{
-        dispatch(testAction(true))
-        console.log(select(testSelector),'here');
+        dispatch(switchMode());
     }
+    const currentTheme = select(themeSelector);
 
     return (
         <div>
-            Hi, You're in home.
-            <button onClick={handleClick}>HI</button>
+            <span style={{color:props.theme.colors.primary}}> Hi, You're in home.Current Theme {currentTheme}</span>
+            <button style={styles.button(props.theme)} onClick={handleClick}>Change Theme</button>
         </div>
     )
 }
+
+const styles ={
+    button:theme=>({
+        backgroundColor:theme.colors.bgColor,
+        color:theme.colors.primary,
+        padding:'10 10 10 10',
+        borderRadius:5,
+        border: 'solid 1px',
+        outline:'none',
+
+    })
+}
+
+export default withTheme(Home,'Home')

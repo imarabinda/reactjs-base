@@ -1,11 +1,11 @@
 import {
   createReducer,
 } from '@reduxjs/toolkit'
-
-import {testAction} from './actions';
+import { DARK_THEME, LIGHT_THEME } from '../../configs/constants';
+import {switchMode} from './actions';
 
 const initState = {
-  isGettingStarted: false,
+  theme:LIGHT_THEME
 }
 
 /**
@@ -15,8 +15,9 @@ const initState = {
  * @returns {*}
  */
 const commonReducer = createReducer( initState, (builder) => {
-      builder.addCase(testAction,(state,action)=>{
-        state.isGettingStarted = action.payload
+      builder
+      .addCase(switchMode,(state,action)=>{
+        state.theme = action.payload != null ? action.payload : state.theme === LIGHT_THEME ? DARK_THEME : LIGHT_THEME;
       })
       .addDefaultCase((state,action)=>{
         return state;

@@ -39,6 +39,7 @@ export const StoreProvider = (props) => (
 );
 
 export const dispatch = type => store.dispatch(type);
+
 export const select = selector => {
     return  selector(store.getState());
 };
